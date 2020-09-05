@@ -58,7 +58,7 @@ BLACK = (0, 0, 0)
 
 
 # Initialize Clock with frames per second
-FPS = 60
+FPS = 45
 clock = pygame.time.Clock()
 
 
