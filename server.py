@@ -15,7 +15,11 @@ def handle_user(conn,addr):
     print(f"[CONNECTION] {addr} has connected")
     connected = True
     while connected:
-        pass
+        msg_len = conn.recv(HEADER).decode(FORMAT)
+        if msg_len != None:
+            msg_len = int(msg_len)
+            msg = conn.recv(msg_len).decode(FORMAT)
+            print(f"[MESSAGE] {addr} says: {msg}")
 
 def start():
     server.listen()
