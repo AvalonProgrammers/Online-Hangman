@@ -12,12 +12,13 @@ server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 server.bind(ADDR)
 
 def handle_user(conn,addr):
-    pass
+    print(f"[CONNECTION] {addr} has connected")
 
 def start():
     server.listen()
     print("[STATUS] Listening")
     while True:
-        pass
+        conn, addr = server.accept()
+        thread = threading.Thread(target=handle_user,args=(conn,addr))
 
 start()
