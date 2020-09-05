@@ -1,11 +1,11 @@
 import socket
 
-HEADER = 16
-PORT = 5050
-SERVER = input("Enter the ip address here.\n")
-ADDR = (SERVER, PORT)
+HEADER = 64
+PORT = 12525
 FORMAT = 'utf-8'
-DISCONNECT_MESSAGE = "!DisconnectUser"
+DISCONNECT_MESSAGE = "!DISCONNECT"
+SERVER = input("Host server's ip address\n")
+ADDR = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
@@ -19,3 +19,5 @@ def send(msg):
     client.send(message)
 
 send("Hello")
+
+send(DISCONNECT_MESSAGE)
