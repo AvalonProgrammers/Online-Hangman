@@ -13,6 +13,9 @@ server.bind(ADDR)
 
 def handle_user(conn,addr):
     print(f"[CONNECTION] {addr} has connected")
+    connected = True
+    while connected:
+        pass
 
 def start():
     server.listen()
