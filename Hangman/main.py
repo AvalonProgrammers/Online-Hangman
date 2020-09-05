@@ -10,7 +10,7 @@ with open(file="words.txt") as words:
     for word in words:
         words = word.split(", ")
 
-isClient = bool(input("Run as client? "))
+isClient = bool(input("Run as client?(True/False) "))
 print(isClient)
 
 # Initialize game window
