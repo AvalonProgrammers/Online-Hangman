@@ -19,7 +19,11 @@ def handle_user(conn,addr):
         if msg_len != None:
             msg_len = int(msg_len)
             msg = conn.recv(msg_len).decode(FORMAT)
-            print(f"[MESSAGE] {addr} says: {msg}")
+            if msg == DISCONNECT_MESSAGE:
+                connected = False
+            else:
+                print(f"[MESSAGE] {addr} says: {msg}")
+    conn.close()
 
 def start():
     server.listen()
