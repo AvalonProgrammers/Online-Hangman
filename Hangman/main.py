@@ -10,12 +10,14 @@ with open(file="words.txt") as words:
     for word in words:
         words = word.split(", ")
 
+isClient = bool(input("Run as client? "))
+print(isClient)
 
 # Initialize game window
 pygame.init()
 
 win = pygame.display.set_mode((800, 500))
-pygame.display.set_caption("Hangman Game!")
+pygame.display.set_caption("Hangman Game! (Online)")
 
 
 # Fonts
@@ -26,9 +28,7 @@ TITLE_FONT = pygame.font.SysFont('comicsans', 70)
 
 # Load Images
 images = []
-for i in range(7):
-    image = pygame.image.load(os.path.join("Assets", "hangman"+str(i)+".png"))
-    images.append(image)
+images.append(pygame.image.load(os.path.join("Assets", "hangman"+str(i)+".png" for i in range(7))))
 
 
 # game variables
@@ -37,9 +37,11 @@ word = random.choice(words).upper()
 guessed = []
 
 
-# Button variables
+# Button constants
 RADIUS = 20
 GAP = 15
+
+# Button variables
 letters = [] 
 startx = round((800 - (RADIUS * 2 + GAP) * 13) /2)
 starty = 400
