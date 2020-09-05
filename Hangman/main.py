@@ -65,7 +65,7 @@ def draw():
 
     # Draw title
     title = TITLE_FONT.render("DEVELOPER HANGMAN", 1, BLACK)
-    win.blit(title, (400 - title.get_width()/2, 20))
+    win.blit(title, (400 - int(title.get_width()/2), 20))
 
     # Draw word
     display_word = ""
@@ -84,7 +84,7 @@ def draw():
         if visible:
             pygame.draw.circle(win, BLACK, (x, y), RADIUS, 3)
             text = LETTER_FONT.render(ltr, 1, BLACK)
-            win.blit(text, (x - text.get_width()/2, y - text.get_height()/2))
+            win.blit(text, (x - int(text.get_width()/2), int(y - text.get_height()/2)))
 
     win.blit(images[hangman_status], (150, 100))
     pygame.display.update()
@@ -95,10 +95,10 @@ def display_message(message):
     pygame.time.delay(1000)
     win.fill(WHITE)
     text = WORD_FONT.render(message, 1, BLACK)
-    win.blit(text, (400 - text.get_width()/2, 200 - text.get_height()/2))
+    win.blit(text, (400 - int(text.get_width()/2), 200 - int(text.get_height()/2)))
     if message == "YOU LOSE! :(":
         ans = WORD_FONT.render(f"The word was {word} ", 1, BLACK)
-        win.blit(ans, (400 - ans.get_width()/2, 280 - ans.get_height()/2))
+        win.blit(ans, (400 - int(ans.get_width()/2), 280 - int(ans.get_height()/2)))
     pygame.display.update()
     pygame.time.delay(3000)
 
@@ -133,11 +133,11 @@ while run:
     
     if won:
         display_message("YOU WON! :)")
-        break
+        run = False
 
     if hangman_status == 6:
         display_message("YOU LOSE! :(")
-        break
+        run = False
 
 
 pygame.quit()
