@@ -28,8 +28,7 @@ TITLE_FONT = pygame.font.SysFont('comicsans', 70)
 
 # Load Images
 images = []
-images.append(pygame.image.load(os.path.join("Assets", "hangman"+str(i)+".png" for i in range(7))))
-
+for i in range(7): images.append(pygame.image.load(os.path.join("Assets", "hangman"+str(i)+".png")))
 
 # game variables
 hangman_status = 0
